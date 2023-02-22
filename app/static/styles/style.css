@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+:root {
+    --background: #0307fd;
+    --card-border: #0307fd;
+    --yann-border: #00ff00;
+    --card-content: rgb(34, 34, 34);
+    --dropzone-content: #444;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+}
+
+/*============================= SECTION BACKGROUND =============================== */
+section {
+    z-index: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+
+}
+
+section::before {
+    z-index: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#000, var(--background), #000);
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+section .square {
+    z-index: 0;
+    position: relative;
+    display: block;
+    width: calc(7vw - 2px);
+    height: calc(7vw - 2px);
+    background-color: #121212;
+    z-index: 2;
+    transition: backround-color 1.5s;
+}
+
+section .square:hover {
+    z-index: 0;
+    background-color: var(--background);
+    transition: background-color 0.2s;
+}
+
+
+@media (max-width:900px) {
+    section .square {
+        width: calc(10vw - 2px);
+        height: calc(10vw - 2px);
+        background: #121212;
+    }
+}
+
+@media (max-width:600px) {
+    section .square {
+        width: calc(20vw - 2px);
+        height: calc(20vw - 2px);
+        background: #121212;
+    }
+}
+
+
+/*=============== CARD YANNICK ======================== */
+.card {
+    z-index: 10;
+    position: absolute;
+    padding: 40px 40px;
+    background-color: var(--card-content);
+    border-radius: 25px;
+    border: 4px solid var(--card-border);
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    top: 110px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 100px;
+}
+
+.circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yannick-container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -90px;
+    border-radius: 50%;
+    background: var(--card-border);
+    padding: 10px;
+    text-align: center;
+}
+
+#yannick {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 3.5px solid var(--yann-border);
+    transition: transform 1s ease-in-out;
+}
+
+.spin {
+    animation: spin 2s linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(720deg);
+    }
+}
+
+
+#text-container {
+    color: white;
+    font-weight: 500;
+    padding-top: 45px;
+    line-height: 1.7em;
+    min-height: 200px;
+}
+
+#text-container::first-letter {
+    color: var(--yann-border);
+    font-weight: 700;
+    font-size: 200%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+#btn-predict {
+    border: none;
+    opacity: 0.2 !important;
+    position: relative;
+    padding: 10px 26px;
+    margin: 10px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    /*pour ne pas que la bulle dépasse*/
+    color: white;
+    background: linear-gradient(90deg, var(--card-border), var(--yann-border));
+    font-weight: bold;
+    transition: all 0.3s;
+    opacity: 0.2 !important;
+    cursor: default;
+}
+
+#btn-predict.active {
+    opacity: 1 !important;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+
+#btn-predict.active:hover {
+    transform: scale(1.1);
+}
+
+#btn-predict.active:active {
+    color: red;
+}
+
+
+/*============ HISTORY ================= */
+.row-result {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+    color: white;
+    padding: 20px 0;
+
+}
+
+.img-result {
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--yann-border);
+    border-radius: 3px;
+}
+
+/*========== LINKS =========== */
+
+.links {
+    margin-top: 0.8em;
+    text-align: center;
+    line-height: 2em;
+}
+
+.links ul li {
+    list-style: none;
+}
+
+.links ul li a {
+    font-size: smaller;
+    color: var(--yann-border)
+}
+
+.links ul li a:checked {
+    color: var(--yann-border)
+}
+
+#link-predict {
+    display: none;
+}
+
+
+@media all and (max-width:500px) {
+    .card {
+        width: 255px;
+        transition: width 0.3s;
+    }
+}

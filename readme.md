@@ -4,11 +4,11 @@
 
 1 ) Cloner le repo git :    
 
-https://github.com/rpdev63/Brief-MLOps.git  
+https://github.com/rpdev63/Brief-MedNet-Partie2.git  
 
 2 ) Créer un environnement virtuel 
 ```
-cd Brief-MLOps/
+cd Brief-MedNet-Partie2/
 python -m venv env
 ```
   
